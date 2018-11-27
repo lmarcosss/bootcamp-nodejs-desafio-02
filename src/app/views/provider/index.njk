@@ -1,0 +1,17 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <div class="content">
+    <strong>Olá, {{ user.name }}</strong>
+    <p>Veja os agendamentos que você tem.</p>
+
+    <ul>
+      {% for appointment in appointments %}
+        <div>{{ appointment.date }}</div>
+        <div>{{ appointment.user}}</div>
+        <br>
+      {% endfor %}
+    </ul>
+    <a href="/app/logout" class="logout">Sair</a>
+  </div>
+{% endblock %}
