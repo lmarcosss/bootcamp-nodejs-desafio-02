@@ -8,8 +8,9 @@
     <ul class="providers">
       {% for appointment in appointments %}
         <li class="provider">
-        <div>{{ appointment.date }}</div>
-        <div>{{ appointment.user.email}}</div>
+        <img src="/files/{{ appointment.user.avatar }}" />
+        <strong>{{ appointment.user.name }} <br> {{ appointment.date | date("HH:mm") }}</strong>
+        <div class="avatar"></div>
         </li>
         <br>
       {% endfor %}
@@ -17,4 +18,3 @@
     <a href="/app/logout" class="logout">Sair</a>
   </div>
 {% endblock %}
-

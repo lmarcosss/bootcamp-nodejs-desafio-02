@@ -4,6 +4,7 @@ module.exports = {
   username: 'docker',
   password: 'docker',
   database: 'gonodemodulo2',
+  imezone: '-02:00',
   operatorAliases: false,
   define: {
     timestamp: true,
