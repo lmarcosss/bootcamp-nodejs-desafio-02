@@ -8,7 +8,11 @@ class SessionController {
   async store (req, res) {
     const { email, password } = req.body
 
-    const user = await User.findOne({ where: { email } })
+    const user = await User.findOne({
+      where: {
+        email
+      }
+    })
 
     if (!user) {
       req.flash('error', 'Usuário não encontrado')
@@ -22,7 +26,10 @@ class SessionController {
 
     req.session.user = user
 
-    return res.redirect('/app/dashboard')
+    if (!req.session.user.provider) {
+      return res.redirect('/app/dashboard')
+    }
+    return res.redirect('/app/schedule')
   }
 
   destroy (req, res) {

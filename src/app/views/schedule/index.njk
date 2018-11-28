@@ -5,13 +5,16 @@
     <strong>Olá, {{ user.name }}</strong>
     <p>Veja os agendamentos que você tem.</p>
 
-    <ul>
+    <ul class="providers">
       {% for appointment in appointments %}
+        <li class="provider">
         <div>{{ appointment.date }}</div>
-        <div>{{ appointment.user}}</div>
+        <div>{{ appointment.user.email}}</div>
+        </li>
         <br>
       {% endfor %}
     </ul>
     <a href="/app/logout" class="logout">Sair</a>
   </div>
 {% endblock %}
+

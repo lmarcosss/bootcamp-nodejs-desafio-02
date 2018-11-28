@@ -6,10 +6,8 @@ class ScheduleController {
   async index (req, res) {
     const { id } = req.session.user
     const appointments = await Appointment.findAll({
-      // include: [{ model: User, as: 'user' }],
-      // include: [{ model: User, as: 'user' }],
       where: {
-        provider_id: id,
+        provider_id: req.session.user.id,
         date: {
           [Op.between]: [
             moment()
@@ -20,9 +18,12 @@ class ScheduleController {
               .format()
           ]
         }
-      }
+      },
+      include: [{ model: User, as: 'user' }]
     })
-    return res.render('provider/index', { appointments })
+    return res.render('schedule/index', {
+      appointments
+    })
   }
 }
 
